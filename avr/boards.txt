@@ -783,3 +783,118 @@ menu.bootloader=Bootloader
 64.menu.clock.1MHz_internal.bootloader.sut_cksel_bits=100001
 64.menu.clock.1MHz_internal.bootloader.ckopt_bit=1
 64.menu.clock.1MHz_internal.build.f_cpu=1000000L
+
+
+
+#####################
+#### AT90can128   ####
+#####################
+
+# General
+c128.name=AT90can128
+c128.upload.tool=avrdude
+c128.upload.maximum_data_size=4096
+c128.bootloader.tool=avrdude
+c128.bootloader.unlock_bits=0xFF
+c128.bootloader.lock_bits=0xCF
+c128.bootloader.low_fuses=0b11{bootloader.sut_cksel_bits}
+c128.bootloader.high_fuses=0b1001011{bootloader.bootrst_bit}
+c128.bootloader.extended_fuses=0b1111{bootloader.bod_bits}1
+c128.build.core=MCUdude_corefiles
+c128.build.variant=64-pin-avr
+c128.build.board=AVR_AT90CAN128
+c128.build.mcu=at90can128
+
+# Upload port select
+c128.menu.bootloader.uart0=Yes (UART0)
+c128.menu.bootloader.uart0.upload.maximum_size=130048
+c128.menu.bootloader.uart0.upload.protocol=arduino
+c128.menu.bootloader.uart0.upload.port=UART0
+c128.menu.bootloader.uart0.bootloader.bootrst_bit=0
+c128.menu.bootloader.uart0.bootloader.file=optiboot_flash/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}_BIGBOOT.hex
+
+c128.menu.bootloader.uart1=Yes (UART1)
+c128.menu.bootloader.uart1.upload.maximum_size=130048
+c128.menu.bootloader.uart1.upload.protocol=arduino
+c128.menu.bootloader.uart1.upload.port=UART1
+c128.menu.bootloader.uart1.bootloader.bootrst_bit=0
+c128.menu.bootloader.uart1.bootloader.file=optiboot_flash/{build.mcu}/{build.f_cpu}/optiboot_flash_{build.mcu}_{upload.port}_{upload.speed}_{build.f_cpu}_BIGBOOT.hex
+
+c128.menu.bootloader.no_bootloader=No bootloader
+c128.menu.bootloader.no_bootloader.upload.maximum_size=131072
+c128.menu.bootloader.no_bootloader.bootloader.bootrst_bit=1
+c128.menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
+
+# Brown out detection 
+c128.menu.BOD.2v5=BOD 2.5V
+c128.menu.BOD.2v5.bootloader.bod_bits=000
+c128.menu.BOD.2v6=BOD 2.6V
+c128.menu.BOD.2v6.bootloader.bod_bits=001
+c128.menu.BOD.2v7=BOD 2.7V
+c128.menu.BOD.2v7.bootloader.bod_bits=010
+c128.menu.BOD.3v8=BOD 3.8V
+c128.menu.BOD.3v8.bootloader.bod_bits=011
+c128.menu.BOD.3v9=BOD 3.9V
+c128.menu.BOD.3v9.bootloader.bod_bits=100
+c128.menu.BOD.4v0=BOD 4.0V
+c128.menu.BOD.4v0.bootloader.bod_bits=101
+c128.menu.BOD.4v1=BOD 4.1V
+c128.menu.BOD.4v1.bootloader.bod_bits=110
+c128.menu.BOD.disabled=BOD disabled
+c128.menu.BOD.disabled.bootloader.bod_bits=111
+
+# Compiler link time optimization
+c128.menu.LTO.Os=LTO disabled
+c128.menu.LTO.Os.compiler.c.extra_flags=
+c128.menu.LTO.Os.compiler.c.elf.extra_flags=
+c128.menu.LTO.Os.compiler.cpp.extra_flags=
+c128.menu.LTO.Os.ltoarcmd=avr-ar
+
+c128.menu.LTO.Os_flto=LTO enabled
+c128.menu.LTO.Os_flto.compiler.c.extra_flags=-Wextra -flto -g
+c128.menu.LTO.Os_flto.compiler.c.elf.extra_flags=-w -flto -g
+c128.menu.LTO.Os_flto.compiler.cpp.extra_flags=-Wextra -flto -g
+c128.menu.LTO.Os_flto.ltoarcmd=avr-gcc-ar
+
+# Clock frequencies
+c128.menu.clock.16MHz_external=16 MHz external
+c128.menu.clock.16MHz_external.upload.speed=115200
+c128.menu.clock.16MHz_external.bootloader.sut_cksel_bits=001111
+c128.menu.clock.16MHz_external.bootloader.ckopt_bit=0
+c128.menu.clock.16MHz_external.build.f_cpu=16000000L
+
+c128.menu.clock.20MHz_external=20 MHz external
+c128.menu.clock.20MHz_external.upload.speed=115200
+c128.menu.clock.20MHz_external.bootloader.sut_cksel_bits=001111
+c128.menu.clock.20MHz_external.bootloader.ckopt_bit=0
+c128.menu.clock.20MHz_external.build.f_cpu=20000000L
+
+c128.menu.clock.18_432MHz_external=18.432 MHz external
+c128.menu.clock.18_432MHz_external.upload.speed=115200
+c128.menu.clock.18_432MHz_external.bootloader.sut_cksel_bits=001111
+c128.menu.clock.18_432MHz_external.bootloader.ckopt_bit=0
+c128.menu.clock.18_432MHz_external.build.f_cpu=18432000L
+
+c128.menu.clock.12MHz_external=12 MHz external
+c128.menu.clock.12MHz_external.upload.speed=57600
+c128.menu.clock.12MHz_external.bootloader.sut_cksel_bits=001111
+c128.menu.clock.12MHz_external.bootloader.ckopt_bit=0
+c128.menu.clock.12MHz_external.build.f_cpu=12000000L
+
+c128.menu.clock.8MHz_external=8 MHz external
+c128.menu.clock.8MHz_external.upload.speed=38400
+c128.menu.clock.8MHz_external.bootloader.sut_cksel_bits=001111
+c128.menu.clock.8MHz_external.bootloader.ckopt_bit=0
+c128.menu.clock.8MHz_external.build.f_cpu=8000000L
+
+c128.menu.clock.8MHz_internal=8 MHz internal
+c128.menu.clock.8MHz_internal.upload.speed=38400
+c128.menu.clock.8MHz_internal.bootloader.sut_cksel_bits=100100
+c128.menu.clock.8MHz_internal.bootloader.ckopt_bit=1
+c128.menu.clock.8MHz_internal.build.f_cpu=8000000L
+
+c128.menu.clock.1MHz_internal=1 MHz internal
+c128.menu.clock.1MHz_internal.upload.speed=9600
+c128.menu.clock.1MHz_internal.bootloader.sut_cksel_bits=100001
+c128.menu.clock.1MHz_internal.bootloader.ckopt_bit=1
+c128.menu.clock.1MHz_internal.build.f_cpu=1000000L
